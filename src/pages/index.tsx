@@ -1,0 +1,23 @@
+import Head from "next/head";
+import style from "@/styles/Home.module.css";
+import Header from "@/components/Molecules/Header/Header";
+import WindowBox from "@/components/Organism/WindowBox/WindowBox";
+
+export default function Home() {
+  return (
+    <>
+      <Head>
+        <title>Ai Generative Art</title>
+        <meta name="description" content="AI based app to generate art" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main className={style.main}>
+        <Header title="AI Generative Art" />
+        <div className={style.content}>
+          <WindowBox title="Art Params" />
+        </div>
+      </main>
+    </>
+  );
+}
