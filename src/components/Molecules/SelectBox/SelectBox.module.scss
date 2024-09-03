@@ -1,0 +1,13 @@
+.main {
+      h3 {
+      margin-bottom: 0.5rem; 
+      margin-top: 10px; 
+    }
+  
+    select {
+      padding: rem(5px, 16px) rem(10px, 16px); 
+      border: rem(1px, 16px) solid var(--color-100); 
+      margin-top: 10px; // Spazio superiore del select
+    }
+  }
+  

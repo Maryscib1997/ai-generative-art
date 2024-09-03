@@ -5,8 +5,13 @@
     border: none;
     cursor: pointer;
     transition: all 0.35s ease;
+    margin-top: 10px;
 
     &:hover{
         background-color: var(--color-80);
+    }
+
+    &:disabled {
+        opacity: 0.5;
     }
 }
