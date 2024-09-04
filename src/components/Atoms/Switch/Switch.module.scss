@@ -1,15 +1,15 @@
 .main {
-    width: 50px;
-    height: 25px;
+    width: 64px;
+    height: 35px;
     border-radius: 36px;
     display: flex;
     align-items: center;
     position: relative;
     cursor: pointer;
-    background-color: var(--color-100);
+    background-color: var(--color-20);
     transition: all 0.2s ease;
     overflow: hidden;
-    margin-top: 15px;
+    margin-top: 13px;
 
     .mask {
         position: absolute;
@@ -17,8 +17,9 @@
         height: 100%;
         z-index: 1;
         background-color: var(--color-20);
-        border: 1px solid var(--color-100);
+        border: 1px solid var(--color-80);
         transition: all 2s ease;
+        border-radius: 15px;
 
         &.active{
             width: 100%;
@@ -27,9 +28,9 @@
 
     .dot {
         position: absolute;
-        width: 16px;
-        height: 16px;
-        border: 1px solid var(--color-100);
+        width: 33px;
+        height: 33px;
+        border: 1px solid var(--color-20);
         border-radius: 50%;
         left: 2px;
         background-color: var(--color-0);
@@ -43,6 +44,6 @@
     }
 
     &.active {
-        background-color: var(--color-100);
+        background-color: var(--color-80);
     }
 }

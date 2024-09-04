@@ -1,17 +1,47 @@
 .main {
   h3 {
-    margin-bottom: rem(5px, 16px); 
+    margin-bottom: rem(5px, 16px);
     margin-top: 10px;
-    font-size: 1rem; 
-    color: var(--color-primary); 
+    font-size: 1rem;
+    color: var(--color-100);
     width: 100%;
   }
-    select {
-      padding: rem(5px, 16px) rem(10px, 16px); 
-      border: rem(1px, 16px) solid var(--color-100);
-      margin-top: 8px;
-      height: 35px;
+
+  select {
+    padding: rem(5px, 16px) rem(10px, 16px);
+    border: rem(1px, 16px) solid var(--color-100);
+    margin-top: 8px;
+    height: 35px;
+    width: 170px;
+    border-radius: 15px;
+    background-color: white;
+    color: black;
+
+    /* Cambia il bordo al focus */
+    &:focus {
+      outline: none;
+      border-color: var(--color-100);
+    }
+
+    /* Modifica il colore di sfondo quando il select è aperto */
+    &::-ms-expand {
+      background-color: yellow; /* per Internet Explorer */
+    }
+
+    option {
+      background-color: var(--color-100);
+      color: white;
+
+      /* Cambia il colore quando si passa sopra con il mouse */
+      &:hover {
+        background-color: var(--color-80);
+      }
+
+      /* Cambia il colore di sfondo delle opzioni selezionate */
+      &:checked,
+      &:focus {
+        background-color: yellow; /* Cambia il colore di evidenziazione in giallo */
+      }
     }
   }
-
-
+}

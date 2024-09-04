@@ -173,7 +173,7 @@ export default function Home() {
                 setValue={setPegi18}
               />
               <Button
-                label="Genera"
+                label="Genere"
                 onClick={handleGenerate}
                 disabled={
                   protagonista.trim().length <= 0 ||
@@ -185,12 +185,14 @@ export default function Home() {
             </div>
 
             {loading ? (
-              <div className={style.loading}>
-                <p>loading...</p>
-              </div>
-            ) : (
-              <div className={style.result}>{response}</div>
-            )}
+          <div className={style.loading}>
+            <div className={style.loader}></div>
+          </div>
+        ) : (
+          <div className={style.result}>
+            {response}
+          </div>
+        )}
           </WindowBox>
         </div>
       </main>
