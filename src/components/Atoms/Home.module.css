@@ -9,10 +9,6 @@
      gap: 20px;
  
    }
-   .result {
-    @include window-style(100%);
-    margin-top: 20px;
-    box-shadow: none;
-  }
+
   }
  }
