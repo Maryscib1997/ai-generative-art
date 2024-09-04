@@ -12,20 +12,12 @@ export const listaGeneri = [
       value: "avventura",
     },
     {
-      label: "Romantico",
-      value: "romantico",
-    },
-    {
       label: "Fantascienza",
       value: "fantascienza",
     },
     {
       label: "Giallo",
       value: "giallo",
-    },
-    {
-      label: "Non lineari",
-      value: "nonlineari",
     },
     {
       label: "Rosa",

@@ -10,9 +10,29 @@
  
    }
    .result {
-    @include window-style(100%);
-    margin-top: 20px;
+    margin-top: 30px;
     box-shadow: none;
   }
   }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; 
+}
+
+.loader {
+  border: 8px solid rgba(0, 0, 0, 0.1); /* Colore di sfondo della circonferenza */
+  border-radius: 50%;
+  border-top: 8px solid #3498db; /* Colore della parte animata */
+  width: 50px; /* Dimensione del cerchio */
+  height: 50px; /* Dimensione del cerchio */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
  }

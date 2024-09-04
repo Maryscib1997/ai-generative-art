@@ -13,11 +13,25 @@ import {
 } from "@google/generative-ai";
 import SwitchBox from "@/components/Molecules/SwitchBox/SwitchBox";
 
-// Aggiungi opzioni di durata (es. breve, medio, lungo) con specifiche sui caratteri
+// Opzioni di durata
 const durataOpzioni = [
   { label: 'Breve', value: 'short', chars: 'meno di 500 caratteri' },
   { label: 'Medio', value: 'medium', chars: 'tra 500 e 1500 caratteri' },
   { label: 'Lungo', value: 'long', chars: 'oltre 1500 caratteri' },
+];
+
+// Opzioni di tipo
+const tipoOpzioni = [
+  { label: 'Persona', value: 'person' },
+  { label: 'Animale', value: 'animal' },
+];
+
+// Opzioni di lingua
+const linguaOpzioni = [
+  { label: 'Italiano', value: 'italiano' },
+  { label: 'Inglese', value: 'inglese' },
+  { label: 'Spagnolo', value: 'spagnolo' },
+  { label: 'Francese', value: 'francese' },
 ];
 
 export default function Home() {
@@ -25,7 +39,12 @@ export default function Home() {
   const [antagonista, setAntagonista] = useState("");
   const [genere, setGenere] = useState("");
   const [pegi18, setPegi18] = useState(false);
-  const [durata, setDurata] = useState("medium"); // Stato per la durata
+  const [durata, setDurata] = useState("medium");
+  const [tipoProtagonista, setTipoProtagonista] = useState("person");
+  const [tipoAntagonista, setTipoAntagonista] = useState("person");
+  const [tipoAnimaleProtagonista, setTipoAnimaleProtagonista] = useState(""); // Stato per il tipo di animale del protagonista
+  const [tipoAnimaleAntagonista, setTipoAnimaleAntagonista] = useState(""); // Stato per il tipo di animale dell'antagonista
+  const [lingua, setLingua] = useState("italiano");
 
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState("");
@@ -33,12 +52,19 @@ export default function Home() {
   const handleGenerate = async () => {
     setLoading(true);
 
-    // Trova l'opzione di durata selezionata e il suo intervallo di caratteri
     const durataScelta = durataOpzioni.find((opt) => opt.value === durata);
 
-    const prompt = `genera un racconto ${genere} della durata ${durataScelta?.chars} per ${
+    // Costruzione del prompt con il tipo di animale se necessario
+    let prompt = `Genera un racconto ${genere} della durata ${durataScelta?.chars} per ${
       pegi18 ? "adulti" : "bambini"
-    }, con il protagonista chiamato ${protagonista} e l'antagonista chiamato ${antagonista}.`;
+    }, con il ${tipoProtagonista} chiamato ${protagonista} e il ${tipoAntagonista} chiamato ${antagonista}. (Lingua: ${lingua})`;
+
+    if (tipoProtagonista === "animal" && tipoAnimaleProtagonista.trim().length > 0) {
+      prompt += ` Il tipo di animale del protagonista è ${tipoAnimaleProtagonista}.`;
+    }
+    if (tipoAntagonista === "animal" && tipoAnimaleAntagonista.trim().length > 0) {
+      prompt += ` Il tipo di animale dell'antagonista è ${tipoAnimaleAntagonista}.`;
+    }
 
     console.log("Chiave API:", process.env.NEXT_PUBLIC_GEMINI_KEY);
 
@@ -97,11 +123,35 @@ export default function Home() {
                 value={protagonista}
                 setValue={setProtagonista}
               />
+              <SelectBox
+                label="Tipo Protagonista:"
+                list={tipoOpzioni}
+                setAction={setTipoProtagonista}
+              />
+              {tipoProtagonista === 'animal' && (
+                <InputBox
+                  label="Scegli un animale:"
+                  value={tipoAnimaleProtagonista}
+                  setValue={setTipoAnimaleProtagonista}
+                />
+              )}
               <InputBox
                 label="Nome Antagonista:"
                 value={antagonista}
                 setValue={setAntagonista}
               />
+              <SelectBox
+                label="Tipo Antagonista:"
+                list={tipoOpzioni}
+                setAction={setTipoAntagonista}
+              />
+              {tipoAntagonista === 'animal' && (
+                <InputBox
+                  label="Scegli un animale:"
+                  value={tipoAnimaleAntagonista}
+                  setValue={setTipoAnimaleAntagonista}
+                />
+              )}
               <SelectBox
                 label="Genere:"
                 list={listaGeneri}
@@ -112,13 +162,18 @@ export default function Home() {
                 list={durataOpzioni}
                 setAction={setDurata}
               />
+              <SelectBox
+                label="Lingua:"
+                list={linguaOpzioni}
+                setAction={setLingua}
+              />
               <SwitchBox
                 label="Per Adulti:"
                 value={pegi18}
                 setValue={setPegi18}
               />
               <Button
-                label="Genere"
+                label="Genera"
                 onClick={handleGenerate}
                 disabled={
                   protagonista.trim().length <= 0 ||
