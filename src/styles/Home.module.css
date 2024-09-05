@@ -16,6 +16,7 @@
   gap: 20px;
   justify-content: center;
   margin-top: 50px;
+  text-align: center;
 }
 
 .row {
@@ -39,6 +40,13 @@
   margin-top: 30px;
 }
 
+.btn {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  height: 77px;
+}
+
 .loading {
   display: flex;
   justify-content: center;
@@ -55,18 +63,12 @@
   animation: spin 1s linear infinite;
 }
 
-.btn {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 15px;
-  height: 77px;
-}
-
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+
 
 /* Media query per tablet */
 @media (max-width: 768px) {
@@ -126,7 +128,7 @@
     height: 50px; /* Dimensione del cerchio */
     animation: spin 1s linear infinite;
   }
-
+  
   .btn {
     display: flex;
     justify-content: center;
@@ -167,14 +169,18 @@
     height: 80px; 
   }
 
-  .loader {
-    width: 40px; 
-    height: 40px;
-  }
-
   .btn {
     height: 60px; 
-    margin-bottom: 20px; 
+    margin-bottom: 10px; 
+  }
+
+  .loader {
+    border: 8px solid rgba(0, 0, 0, 0.1); /* Colore di sfondo della circonferenza */
+    border-radius: 50%;
+    border-top: 8px solid var(--color-20); /* Colore della parte animata */
+    width: 50px; /* Dimensione del cerchio */
+    height: 50px; /* Dimensione del cerchio */
+    animation: spin 1s linear infinite;
   }
 
   @keyframes spin {

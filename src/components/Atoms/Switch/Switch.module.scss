@@ -15,9 +15,9 @@
         width: 0%;
         height: 100%;
         z-index: 1;
-        background-color: var(--color-20);
+        background-color: var(--color-80);
         border: 1px solid var(--color-80);
-        transition: all 2s ease;
+
         border-radius: 15px;
 
         &.active{
@@ -29,7 +29,7 @@
         position: absolute;
         width: 33px;
         height: 33px;
-        border: 1px solid var(--color-20);
+        border: 1px solid var(--color-0);
         border-radius: 50%;
         left: 2px;
         background-color: var(--color-0);
@@ -39,11 +39,12 @@
         &.active {
             left: 30px;
             border: 1px solid var(--color-20);
+            background-color: var(--color-20);
         }
     }
 
     &.active {
-        background-color: var(--color-80);
+        background-color: var(--color-0);
     }
 }
 
@@ -65,11 +66,11 @@
         width: 24px; 
         height: 24px; 
         left: 2px; 
-        transition: all 0.2s ease;
+
     }
 
     .dot.active {
-        left: 22px; 
+        left: 22px; /* Riduci la distanza del punto quando attivo */
     }
 
     .field {

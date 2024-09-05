@@ -246,7 +246,7 @@ export default function Home() {
 
             {loading && (
               <div className={style.loading}>
-                <p>Loading...</p>
+                <div className={style.loader}></div>
               </div>
             )}
             {!loading && response && (
