@@ -36,8 +36,9 @@
   margin-top: 60px;
   box-shadow: none;
   text-align: left;
-  width: 100%;
+  width: 95%;
   margin-top: 30px;
+  margin: 30px;
 }
 
 .btn {
@@ -109,7 +110,7 @@
     margin-top: 60px;
     box-shadow: none;
     text-align: left;
-    width: 100%;
+    width: 80%;
     margin-top: 30px;
   }
 
