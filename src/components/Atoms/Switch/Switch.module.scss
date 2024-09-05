@@ -9,80 +9,91 @@
     background-color: var(--color-20);
     overflow: hidden;
     margin-top: 13px;
+}
+
+.mask {
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    z-index: 1;
+    background-color: var(--color-80);
+    border: 1px solid var(--color-80);
+    border-radius: 15px;
+    transition: width 0.2s ease;
+}
+
+.mask.active {
+    width: 100%;
+}
+
+.dot {
+    position: absolute;
+    width: 33px;
+    height: 33px;
+    border: 1px solid var(--color-0);
+    border-radius: 50%;
+    left: 2px;
+    background-color: var(--color-0);
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.dot.active {
+    left: 30px;
+    border: 1px solid var(--color-20);
+    background-color: var(--color-20);
+}
+
+.main.active {
+    background-color: var(--color-0);
+}
+
+/* Media query per tablet */
+@media (max-width: 768px) {
+    .main {
+        width: 56px; /* Riduci la larghezza mantenendo le proporzioni */
+        height: 30px; /* Riduci l'altezza mantenendo le proporzioni */
+        margin-top: 12px;
+    }
 
     .mask {
-        position: absolute;
-        width: 0%;
-        height: 100%;
-        z-index: 1;
-        background-color: var(--color-80);
-        border: 1px solid var(--color-80);
-
-        border-radius: 15px;
-
-        &.active{
-            width: 100%;
-        }
+        border-radius: 14px;
     }
 
     .dot {
-        position: absolute;
-        width: 33px;
-        height: 33px;
-        border: 1px solid var(--color-0);
-        border-radius: 50%;
-        left: 2px;
-        background-color: var(--color-0);
-        transition: all 0.2s ease;
-        z-index: 10;
-
-        &.active {
-            left: 30px;
-            border: 1px solid var(--color-20);
-            background-color: var(--color-20);
-        }
+        width: 25px; /* Proporziona il diametro del cerchio */
+        height: 25px;
     }
 
-    &.active {
-        background-color: var(--color-0);
+    .dot.active {
+        left: 25px; /* Adatta la posizione del punto */
     }
 }
-
-
 
 /* Media query per smartphone */
 @media (max-width: 480px) {
     .main {
-        width: 48px; 
+        width: 48px; /* Riduci ulteriormente per smartphone */
         height: 28px; 
-        margin-top: 10px; 
+        margin-top: 10px;
     }
 
     .mask {
-        border-radius: 14px; 
+        border-radius: 14px;
     }
 
     .dot {
-        width: 14px; 
-        height: 14px; 
-        left: 2px; 
-
+        width: 20px; /* Riduci il diametro del punto */
+        height: 20px;
+        left: 2px;
     }
 
     .dot.active {
-        left: 22px; /* Riduci la distanza del punto quando attivo */
+        left: 22px; /* Adatta la posizione del punto quando attivo */
     }
 
     .field {
         margin-bottom: 15px;
-        width: 100%; 
+        width: 100%;
     }
 }
-
-/* Media query per smartphone */
-@media (max-width: 480px) {
-    .field {
-      margin-bottom: 15px;
-      width: 100%; 
-    }
-    }
