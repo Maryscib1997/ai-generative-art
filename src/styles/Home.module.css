@@ -32,6 +32,27 @@
   justify-content: center;
 }
 
+.customButton {
+  padding: 10px 15px;
+  background-color: var(--color-20);
+  color: var(--color-0);
+  border: none;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  margin-top: 30px;
+}
+
+.customButton:hover {
+  background-color: var(--color-80);
+}
+
+.customButton:disabled {
+  opacity: 0.5;
+}
+
+
 .result {
   margin-top: 60px;
   box-shadow: none;
@@ -39,13 +60,6 @@
   width: 95%;
   margin-top: 30px;
   margin: 30px;
-}
-
-.btn {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 25px;
-  height: 77px;
 }
 
 .loading {
@@ -130,12 +144,8 @@
     animation: spin 1s linear infinite;
   }
   
-  .btn {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 15px;
-    height: 77px;
-  }
+
+  
 }
 
 /* Media query per smartphone */
@@ -170,10 +180,18 @@
     height: 80px; 
   }
 
-  .btn {
-    height: 60px; 
-    margin-bottom: 10px; 
+  .customButton {
+    padding: 5px 10px;
+    background-color: var(--color-20);
+    color: var(--color-0);
+    border: none;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    border-radius: 15px;
+    margin-top: 40px;
+    margin-left: 130px;
   }
+  
 
   .loader {
     border: 8px solid rgba(0, 0, 0, 0.1); /* Colore di sfondo della circonferenza */

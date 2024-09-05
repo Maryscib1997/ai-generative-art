@@ -250,17 +250,19 @@ export default function Home() {
               </div>
             )}
             {!loading && response && (
-              <div className={style.result}>
+               <div className={style.result}>
                 <div className={style.btn}>
-                  {isPlaying ? (
-                    <Button label="Stop" onClick={handleStopVoice} />
-                  ) : (
-                    <Button label="Racconta" onClick={handleVoice} />
-                  )}
-                </div>
-                {response}
-              </div>
-            )}
+                 {isPlaying ? (
+                  <button onClick={handleStopVoice} 
+                  className={style.customButton}> Stop </button>
+                 ) : (
+                <button onClick={handleVoice} 
+                className={style.customButton}> Racconta </button>
+      )}
+    </div>
+    {response}
+  </div>
+)}
           </WindowBox>
         </div>
       </main>
