@@ -138,7 +138,6 @@
 /* Media query per smartphone */
 @media (max-width: 480px) {
   .main {
-    background-color: var(--color-80);
     padding: 20px;
     min-height: auto; 
   }
@@ -157,7 +156,8 @@
   }
 
   .field {
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
+    width: 100%; 
   }
 
   .result {
@@ -175,7 +175,7 @@
 
   .btn {
     height: 60px; 
-    margin-bottom: 10px; 
+    margin-bottom: 20px; 
   }
 
   @keyframes spin {

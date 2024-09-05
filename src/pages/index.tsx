@@ -119,9 +119,8 @@ export default function Home() {
         } else {
           setResponse("Per favore, compila tutti i campi.");
         }
-      } else {
-        setResponse("Chiave API non configurata.");
-      }
+      } 
+
     } catch (e) {
       console.error("Errore durante la generazione del contenuto:", e);
       setError(true);

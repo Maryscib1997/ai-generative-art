@@ -25,3 +25,11 @@
     background-color: var(--color-80); /* Colore di sfondo giallo quando si passa il mouse */
   }
 }
+
+/* Media query per smartphone */
+@media (max-width: 480px) {
+.field {
+  margin-bottom: 15px;
+  width: 100%; 
+}
+}
