@@ -1,8 +1,4 @@
-# Ai Story Teller
-
-(img/Screenshot%202024-09-05%20152842.png)
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![Screenshot 2024-09-05 152842](https://github.com/user-attachments/assets/6fb68ea4-3c5d-49a1-9ce2-a2829637e7bf)
 
 # AI Story Teller
 
