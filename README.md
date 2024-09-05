@@ -1,6 +1,6 @@
 # Ai Story Teller
 
-![Screenshot](img/Screenshot%202024-09-05%20152842.png)
+(img/Screenshot%202024-09-05%20152842.png)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -33,5 +33,3 @@ yarn dev
 pnpm dev
 # or
 bun dev
-
-Aprire il link http://localhost:3000.
