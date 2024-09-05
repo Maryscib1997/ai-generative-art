@@ -1,4 +1,5 @@
-![Screenshot 2024-09-05 152842](https://github.com/user-attachments/assets/d2908ef8-81bd-410e-9572-94d121870fc4)
+![Screenshot 2024-09-05 152842](https://github.com/user-attachments/assets/a47e2838-214e-489b-9a39-889908dd7ce0)
+
 
 # Ai Story Teller
 [Vai al sito](https://ai-story-teller-chi.vercel.app/)
