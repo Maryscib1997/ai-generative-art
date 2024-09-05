@@ -31,8 +31,8 @@
   /* Media query per tablet */
 @media (max-width: 768px) {
   .main {
-    width: 80%; 
-    max-width: 550px; 
+    width: 90%; 
+    max-width: 400px; 
     margin: auto;
     padding: 15px; 
     box-shadow: 0px 4px 4px var(--color-20); 
@@ -49,7 +49,7 @@
 @media (max-width: 480px) {
   .main {
     width: 90%; 
-    max-width: 300px; 
+    max-width: 350px; 
     padding: 10px; 
     box-shadow: 0px 3px 3px var(--color-20); 
     border-radius: 25px; 
