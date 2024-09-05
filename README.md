@@ -1,3 +1,9 @@
+# Ai Story Teller
+
+(img/Screenshot%202024-09-05%20152842.png)
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
 # AI Story Teller
 
 AI Story Teller è un'app che consente agli utenti di creare e ascoltare storie personalizzate. Gli utenti possono scegliere vari parametri, come il genere, i personaggi e l'ambientazione, per generare una storia unica. Una volta che la storia è stata creata, è possibile ascoltarla direttamente nell'app.
@@ -10,7 +16,7 @@ AI Story Teller è un'app che consente agli utenti di creare e ascoltare storie 
 
 ## Inizia
 
-Per iniziare a utilizzare AI Story Teller, segui questi semplici passaggi:
+Per iniziare con AI Story Teller, segui questi semplici passi:
 
 1. **Scegli i Parametri:** Seleziona le opzioni per personalizzare la tua storia.
 2. **Genera la Storia:** Crea una storia basata sulle tue scelte.
