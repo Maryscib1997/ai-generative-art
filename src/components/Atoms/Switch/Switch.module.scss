@@ -46,3 +46,42 @@
         background-color: var(--color-80);
     }
 }
+
+
+
+/* Media query per smartphone */
+@media (max-width: 480px) {
+    .main {
+        width: 48px; 
+        height: 28px; 
+        margin-top: 10px; 
+    }
+
+    .mask {
+        border-radius: 14px; 
+    }
+
+    .dot {
+        width: 24px; 
+        height: 24px; 
+        left: 2px; 
+        transition: all 0.2s ease;
+    }
+
+    .dot.active {
+        left: 22px; 
+    }
+
+    .field {
+        margin-bottom: 15px;
+        width: 100%; 
+    }
+}
+
+/* Media query per smartphone */
+@media (max-width: 480px) {
+    .field {
+      margin-bottom: 15px;
+      width: 100%; 
+    }
+    }

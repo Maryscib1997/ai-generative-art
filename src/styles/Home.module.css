@@ -138,7 +138,6 @@
 /* Media query per smartphone */
 @media (max-width: 480px) {
   .main {
-    padding: 20px;
     min-height: auto; 
   }
 
