@@ -12,7 +12,7 @@ AI Story Teller è un'app che consente agli utenti di creare e ascoltare storie 
 
 ## Inizia
 
-Per iniziare con AI Story Teller, segui questi semplici passi:
+Per iniziare ad utilizzare AI Story Teller, segui questi semplici passaggi:
 
 1. **Scegli i Parametri:** Seleziona le opzioni per personalizzare la tua storia.
 2. **Genera la Storia:** Crea una storia basata sulle tue scelte.
