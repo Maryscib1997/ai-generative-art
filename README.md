@@ -1,7 +1,6 @@
+![Screenshot 2024-09-05 152842](https://github.com/user-attachments/assets/d2908ef8-81bd-410e-9572-94d121870fc4)
+
 # Ai Story Teller
-
-![Screenshot](img/Screenshot%202024-09-05%20152842.png)
-
 [Vai al sito](https://ai-story-teller-chi.vercel.app/)
 
 # AI Story Teller
