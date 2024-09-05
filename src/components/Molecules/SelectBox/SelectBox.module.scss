@@ -14,34 +14,14 @@
     height: 35px;
     width: 170px;
     border-radius: 15px;
-    background-color: white;
-    color: black;
+  }
 
-    /* Cambia il bordo al focus */
-    &:focus {
-      outline: none;
-      border-color: var(--color-100);
-    }
+  option {
+    background-color: var(--color-20); // Sfondo viola delle opzioni
+    color: var(--color-0); // Colore testo delle opzioni
+  }
 
-    /* Modifica il colore di sfondo quando il select è aperto */
-    &::-ms-expand {
-      background-color: yellow; /* per Internet Explorer */
-    }
-
-    option {
-      background-color: var(--color-100);
-      color: white;
-
-      /* Cambia il colore quando si passa sopra con il mouse */
-      &:hover {
-        background-color: var(--color-80);
-      }
-
-      /* Cambia il colore di sfondo delle opzioni selezionate */
-      &:checked,
-      &:focus {
-        background-color: yellow; /* Cambia il colore di evidenziazione in giallo */
-      }
-    }
+  option:focus {
+    background-color: var(--color-80); /* Colore di sfondo giallo quando si passa il mouse */
   }
 }
