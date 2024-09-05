@@ -27,6 +27,26 @@ const tipoOpzioni = [
   { label: 'Animale', value: 'animal' },
 ];
 
+//Opzioni di ambientazione 
+const ambientazioneOpzioni = [
+  { label: 'Città', value: 'città' },
+  { label: 'Foresta', value: 'foresta' },
+  { label: 'Isola', value: 'isola' },
+  { label: 'Montagna', value: 'montagna' },
+  { label: 'Spazio', value: 'spazio' },
+  { label: 'Casa', value: 'casa' },
+  { label: 'Cimitero', value: 'cimitero' },
+  { label: 'Scuola', value: 'scuola' },
+  { label: 'Università', value: 'università' },
+  { label: 'Lavoro', value: 'lavoro' },
+]
+
+const tempoOpzioni = [
+  { label: 'Passato', value: 'past' },
+  { label: 'Presente', value: 'present' },
+  { label: 'Futuro', value: 'future' },
+];
+
 // Opzioni di lingua
 const linguaOpzioni = [
   { label: 'Italiano', value: 'italiano' },
@@ -45,6 +65,8 @@ export default function Home() {
   const [tipoAntagonista, setTipoAntagonista] = useState("person");
   const [tipoAnimaleProtagonista, setTipoAnimaleProtagonista] = useState(""); // Stato per il tipo di animale del protagonista
   const [tipoAnimaleAntagonista, setTipoAnimaleAntagonista] = useState(""); // Stato per il tipo di animale dell'antagonista
+  const [ambientazione, setAmbientazione] = useState(""); 
+  const [tempo, setTempo] = useState("present");
   const [lingua, setLingua] = useState("italiano");
 
   const [loading, setLoading] = useState(false);
@@ -187,9 +209,19 @@ export default function Home() {
                 setAction={setGenere}
               />
               <SelectBox
-                label="Durata:"
+                label="Lunghezza:"
                 list={durataOpzioni}
                 setAction={setDurata}
+              />
+               <SelectBox
+                label="Ambientazione:"
+                list={ambientazioneOpzioni}
+                setAction={setAmbientazione}
+              />
+              <SelectBox
+              label="Epoca:"
+              list={tempoOpzioni}
+              setAction={setTempo}
               />
               <SelectBox
                 label="Lingua:"
