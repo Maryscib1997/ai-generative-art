@@ -149,18 +149,17 @@ export default function Home() {
       const firstSentence = sentences[0].trim();
       const words = firstSentence.split(' ');
       
-      // Restituisce le prime 5 parole come titolo
-      return words.slice(0, 5).join(' ') + (words.length > 5 ? '...' : '');
+      // Restituisce le prime 3 parole come titolo
+      return words.slice(0, 3).join(' ') + (words.length > 5 ? '' : '');
     }
   
     // Se non ci sono frasi, restituisce un titolo predefinito
     return 'Titolo generato';
   };
   
-
   const handleVoice = () => {
     const utterance = new SpeechSynthesisUtterance(response);
-    utterance.lang = "it-IT";
+    utterance.lang = "it-IT", "en-GB", "es-ES", "fr-FR";
     setIsPlaying(true);
     speechSynthesis.speak(utterance);
 
@@ -236,15 +235,15 @@ export default function Home() {
                 list={ambientazioneOpzioni}
                 setAction={setAmbientazione}
               />
-                  <SelectBox
-              label="Epoca:"
-              list={tempoOpzioni}
-              setAction={setTempo}
-              />
               <SelectBox
                 label="Genere:"
                 list={listaGeneri}
                 setAction={setGenere}
+              />
+                  <SelectBox
+              label="Epoca:"
+              list={tempoOpzioni}
+              setAction={setTempo}
               />
               <SelectBox
                 label="Lunghezza:"
