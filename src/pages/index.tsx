@@ -63,8 +63,8 @@ export default function Home() {
   const [durata, setDurata] = useState("medium");
   const [tipoProtagonista, setTipoProtagonista] = useState("person");
   const [tipoAntagonista, setTipoAntagonista] = useState("person");
-  const [tipoAnimaleProtagonista, setTipoAnimaleProtagonista] = useState(""); // Stato per il tipo di animale del protagonista
-  const [tipoAnimaleAntagonista, setTipoAnimaleAntagonista] = useState(""); // Stato per il tipo di animale dell'antagonista
+  const [tipoAnimaleProtagonista, setTipoAnimaleProtagonista] = useState(""); 
+  const [tipoAnimaleAntagonista, setTipoAnimaleAntagonista] = useState(""); 
   const [ambientazione, setAmbientazione] = useState("");
   const [tempo, setTempo] = useState("present");
   const [lingua, setLingua] = useState("italiano");
@@ -74,25 +74,27 @@ export default function Home() {
   const [response, setResponse] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
   const [title, setTitle] = useState(""); // Stato per il titolo
-
+  const [questions, setQuestions] = useState<string[]>([]);
+  const [answers, setAnswers] = useState<string[]>([]);
+  
   const handleGenerate = async () => {
     setLoading(true);
     setError(false);
-
+  
     const durataScelta = durataOpzioni.find((opt) => opt.value === durata);
-
+  
     // Costruzione del prompt con il tipo di animale se necessario
     let prompt = `Genera un racconto ${genere} della durata ${durataScelta?.chars} per ${
       pegi18 ? "adulti" : "bambini"
     }, con il ${tipoProtagonista} chiamato ${protagonista} e il ${tipoAntagonista} chiamato ${antagonista}. (Lingua: ${lingua})`;
-
+  
     if (tipoProtagonista === "animal" && tipoAnimaleProtagonista.trim().length > 0) {
       prompt += ` Il tipo di animale del protagonista è ${tipoAnimaleProtagonista}.`;
     }
     if (tipoAntagonista === "animal" && tipoAnimaleAntagonista.trim().length > 0) {
       prompt += ` Il tipo di animale dell'antagonista è ${tipoAnimaleAntagonista}.`;
     }
-
+  
     try {
       if (process.env.NEXT_PUBLIC_GEMINI_KEY) {
         if (
@@ -100,22 +102,20 @@ export default function Home() {
           antagonista.trim().length > 0 &&
           genere.trim().length > 0
         ) {
-          const genAI = new GoogleGenerativeAI(
-            process.env.NEXT_PUBLIC_GEMINI_KEY
-          );
+          const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_KEY);
           const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
+  
           const result = await model.generateContent(prompt);
-
-          // Controllo della struttura della risposta
+  
           if (result?.response?.candidates && Array.isArray(result.response.candidates)) {
-            const output = (
-              result.response.candidates as GenerateContentCandidate[]
-            )[0]?.content?.parts[0]?.text || "Nessun contenuto generato.";
-
+            const output = (result.response.candidates as GenerateContentCandidate[])[0]?.content?.parts[0]?.text || "Nessun contenuto generato.";
+  
             setResponse(output);
-            const title = generateTitle(output); // Genera il titolo
-            setTitle(title); // Memorizza il titolo nello stato
+            const title = generateTitle(output);
+            setTitle(title);
+            
+            // Chiamata per l'analisi del testo
+            await analyzeText(output);
           } else {
             setResponse("Nessun contenuto generato.");
             setTitle("Titolo non disponibile");
@@ -133,7 +133,7 @@ export default function Home() {
       setLoading(false);
     }
   };
-
+  
   const generateTitle = (text: string): string => {
     // Verifica che `text` sia una stringa valida
     if (typeof text !== 'string') {
@@ -155,6 +155,33 @@ export default function Home() {
   
     // Se non ci sono frasi, restituisce un titolo predefinito
     return 'Titolo generato';
+  };
+  
+  const analyzeText = async (text: string) => {
+    const prompt = `Analizza il seguente racconto e genera alcune domande con le relative risposte. "${text}"`;
+  
+    try {
+      if (process.env.NEXT_PUBLIC_GEMINI_KEY) {
+        const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_KEY);
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  
+        const result = await model.generateContent(prompt);
+  
+        if (result?.response?.candidates && Array.isArray(result.response.candidates)) {
+          const analysis = (result.response.candidates as GenerateContentCandidate[])[0]?.content?.parts[0]?.text || "";
+          const [questionsText, answersText] = analysis.split('\n\n'); 
+          setQuestions(questionsText.split('\n').filter(q => q.trim() !== ''));
+          setAnswers(answersText.split('\n').filter(a => a.trim() !== ''));
+        } else {
+          setQuestions([]);
+          setAnswers([]);
+        }
+      }
+    } catch (e) {
+      console.error("Errore durante l'analisi del contenuto:", e);
+      setQuestions([]);
+      setAnswers([]);
+    }
   };
   
   const handleVoice = () => {
@@ -286,12 +313,25 @@ export default function Home() {
                  ) : (
                 <button onClick={handleVoice} 
                 className={style.customButton}> Racconta </button>
-      )}
+              )}
               <div className={style.title}>
                 <h2>{title}</h2> {/* Visualizza il titolo */}
               </div> 
-    </div>
-    {response}
+            </div>
+           {response}
+          </div>
+          )}
+          {!loading && questions.length > 0 && answers.length > 0 && (
+             <div className={style.analysis}>
+             <ul>
+            {questions.map((question, index) => (
+            <li key={index}>
+              {question}
+             <br />
+            {answers[index] || "Nessuna risposta disponibile"}
+        </li>
+      ))}
+    </ul>
   </div>
 )}
           </WindowBox>

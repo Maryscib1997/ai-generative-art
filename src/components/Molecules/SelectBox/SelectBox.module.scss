@@ -20,6 +20,9 @@
   option {
     background-color: var(--color-20); // Sfondo viola delle opzioni
     color: var(--color-0); // Colore testo delle opzioni
+    text-align: center; 
+    justify-content: center; 
+    align-items: center; 
   }
 
   option:focus {

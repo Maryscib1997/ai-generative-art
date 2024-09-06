@@ -54,6 +54,7 @@
 
 .result {
   padding: 20px;
+  font-size: 16px;
   box-shadow: none;
   text-align: left;
   width: 100%;
@@ -77,6 +78,35 @@
   height: 50px; /* Dimensione del cerchio */
   animation: spin 1s linear infinite;
 }
+
+/* Aggiungi questa sezione nel tuo file Home.module.css */
+.analysis {
+  padding: 20px;
+  padding-top: 35px;
+  box-shadow: none;
+  text-align: left;
+  font-size: 14px;
+  width: 100%;
+  line-height: 1.8;
+}
+
+.analysis ul {
+  list-style-type: none; /* Rimuove i punti elenco */
+  padding: 0; /* Rimuove il padding predefinito */
+}
+
+.analysis li {
+  margin-bottom: 15px; /* Spazio tra le domande e risposte */
+}
+
+.analysis li::before {
+  font-weight: bold;
+}
+
+.analysis li:nth-child(even)::before {
+  font-weight: normal;
+}
+
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
