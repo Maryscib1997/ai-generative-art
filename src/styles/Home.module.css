@@ -52,14 +52,14 @@
   opacity: 0.5;
 }
 
-
 .result {
-  margin-top: 60px;
+  padding: 20px;
   box-shadow: none;
   text-align: left;
-  width: 95%;
-  margin-top: 30px;
-  margin: 30px;
+  width: 100%;
+  line-height: 1.8;
+  hyphens: auto; /* Abilita la sillabazione */
+  word-break: break-word; /* Gestisci le parole lunghe */
 }
 
 .loading {

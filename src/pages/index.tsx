@@ -27,7 +27,7 @@ const tipoOpzioni = [
   { label: 'Animale', value: 'animal' },
 ];
 
-//Opzioni di ambientazione 
+// Opzioni di ambientazione
 const ambientazioneOpzioni = [
   { label: 'Città', value: 'città' },
   { label: 'Foresta', value: 'foresta' },
@@ -39,7 +39,7 @@ const ambientazioneOpzioni = [
   { label: 'Scuola', value: 'scuola' },
   { label: 'Università', value: 'università' },
   { label: 'Lavoro', value: 'lavoro' },
-]
+];
 
 const tempoOpzioni = [
   { label: 'Passato', value: 'past' },
@@ -65,7 +65,7 @@ export default function Home() {
   const [tipoAntagonista, setTipoAntagonista] = useState("person");
   const [tipoAnimaleProtagonista, setTipoAnimaleProtagonista] = useState(""); // Stato per il tipo di animale del protagonista
   const [tipoAnimaleAntagonista, setTipoAnimaleAntagonista] = useState(""); // Stato per il tipo di animale dell'antagonista
-  const [ambientazione, setAmbientazione] = useState(""); 
+  const [ambientazione, setAmbientazione] = useState("");
   const [tempo, setTempo] = useState("present");
   const [lingua, setLingua] = useState("italiano");
 
@@ -73,6 +73,7 @@ export default function Home() {
   const [error, setError] = useState(false);
   const [response, setResponse] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
+  const [title, setTitle] = useState(""); // Stato per il titolo
 
   const handleGenerate = async () => {
     setLoading(true);
@@ -103,7 +104,7 @@ export default function Home() {
             process.env.NEXT_PUBLIC_GEMINI_KEY
           );
           const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-  
+
           const result = await model.generateContent(prompt);
 
           // Controllo della struttura della risposta
@@ -111,23 +112,51 @@ export default function Home() {
             const output = (
               result.response.candidates as GenerateContentCandidate[]
             )[0]?.content?.parts[0]?.text || "Nessun contenuto generato.";
-  
+
             setResponse(output);
+            const title = generateTitle(output); // Genera il titolo
+            setTitle(title); // Memorizza il titolo nello stato
           } else {
             setResponse("Nessun contenuto generato.");
+            setTitle("Titolo non disponibile");
           }
         } else {
           setResponse("Per favore, compila tutti i campi.");
+          setTitle("Titolo non disponibile");
         }
-      } 
-
+      }
     } catch (e) {
       console.error("Errore durante la generazione del contenuto:", e);
       setError(true);
+      setTitle("Titolo non disponibile");
     } finally {
       setLoading(false);
     }
-  }
+  };
+
+  const generateTitle = (text: string): string => {
+    // Verifica che `text` sia una stringa valida
+    if (typeof text !== 'string') {
+      return 'Titolo generato';
+    }
+  
+    // Rimuove spazi all'inizio e alla fine della stringa e la suddivide in frasi
+    const sentences = text.trim().split('.');
+    
+    // Controlla se ci sono frasi nella stringa
+    if (sentences.length > 0) {
+      // Prende la prima frase e la suddivide in parole
+      const firstSentence = sentences[0].trim();
+      const words = firstSentence.split(' ');
+      
+      // Restituisce le prime 5 parole come titolo
+      return words.slice(0, 5).join(' ') + (words.length > 5 ? '...' : '');
+    }
+  
+    // Se non ci sono frasi, restituisce un titolo predefinito
+    return 'Titolo generato';
+  };
+  
 
   const handleVoice = () => {
     const utterance = new SpeechSynthesisUtterance(response);
@@ -203,6 +232,16 @@ export default function Home() {
                 />
               )}
               <SelectBox
+                label="Ambientazione:"
+                list={ambientazioneOpzioni}
+                setAction={setAmbientazione}
+              />
+                  <SelectBox
+              label="Epoca:"
+              list={tempoOpzioni}
+              setAction={setTempo}
+              />
+              <SelectBox
                 label="Genere:"
                 list={listaGeneri}
                 setAction={setGenere}
@@ -211,16 +250,6 @@ export default function Home() {
                 label="Lunghezza:"
                 list={durataOpzioni}
                 setAction={setDurata}
-              />
-               <SelectBox
-                label="Ambientazione:"
-                list={ambientazioneOpzioni}
-                setAction={setAmbientazione}
-              />
-              <SelectBox
-              label="Epoca:"
-              list={tempoOpzioni}
-              setAction={setTempo}
               />
               <SelectBox
                 label="Lingua:"
@@ -259,6 +288,9 @@ export default function Home() {
                 <button onClick={handleVoice} 
                 className={style.customButton}> Racconta </button>
       )}
+              <div className={style.title}>
+                <h2>{title}</h2> {/* Visualizza il titolo */}
+              </div> 
     </div>
     {response}
   </div>
