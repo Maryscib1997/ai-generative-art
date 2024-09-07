@@ -3,7 +3,7 @@
     max-width: 160px; // Dimensione massima del Toast
     margin: auto;
     padding: 20px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 5px var(--color-20);
     border: 1px solid var(--color-100);
     border-radius: 10px;
     background-color: var(--color-0);
@@ -53,3 +53,22 @@
     }
   }
   
+  @media (max-width: 768px) {
+    .main {
+      right: 10px; 
+      top: 445px; 
+      max-width: 130px;
+      border-radius: 5px;
+      box-shadow: 0px 4px 4px var(--color-20);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .main {
+      right: 10px; 
+      top: 445px; 
+      max-width: 130px;
+      border-radius: 15px;
+      box-shadow: 0px 4px 4px var(--color-20);
+    }
+  }

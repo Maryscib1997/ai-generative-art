@@ -1,5 +1,5 @@
 .main {
-    width: 80px;
+    width: 65px;
     height: 34px;
     border-radius: 36px;
     display: flex;
@@ -38,7 +38,7 @@
 }
 
 .dot.active {
-    left: 45px;
+    left: 32px;
     border: 1px solid var(--color-20);
     background-color: var(--color-20);
 }
@@ -52,7 +52,8 @@
     .main {
         width: 56px; /* Riduci la larghezza mantenendo le proporzioni */
         height: 30px; /* Riduci l'altezza mantenendo le proporzioni */
-        margin-top: 12px;
+        margin-top: 15px;
+        margin-right: 10px;
     }
 
     .mask {
@@ -72,23 +73,23 @@
 /* Media query per smartphone */
 @media (max-width: 480px) {
     .main {
-        width: 48px; /* Riduci ulteriormente per smartphone */
-        height: 28px; 
+        width: 70px; 
+        height: 30px; 
         margin-top: 10px;
+        margin-left: 10px ;
     }
 
     .mask {
-        border-radius: 14px;
+        border-radius: 24px;
     }
 
     .dot {
-        width: 20px; /* Riduci il diametro del punto */
-        height: 20px;
-        left: 2px;
+        width: 30px; /* Riduci il diametro del punto */
+        height: 30px;
     }
 
     .dot.active {
-        left: 22px; /* Adatta la posizione del punto quando attivo */
+        left: 40px; /* Adatta la posizione del punto quando attivo */
     }
 
     .field {

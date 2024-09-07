@@ -5,7 +5,7 @@ import WindowBox from "@/components/Organism/WindowBox/WindowBox";
 import InputBox from "@/components/Molecules/InputBox/InputBox";
 import SelectBox from "@/components/Molecules/SelectBox/SelectBox";
 import { useState } from "react";
-import { listaGeneri } from "@/constants/common";
+import { listaGeneri, durataOpzioni, tipoOpzioni, ambientazioneOpzioni, tempoOpzioni, linguaOpzioni } from "@/constants/common";
 import Button from "@/components/Atoms/Button/Button";
 import {
   GenerateContentCandidate,
@@ -13,47 +13,6 @@ import {
 } from "@google/generative-ai";
 import SwitchBox from "@/components/Molecules/SwitchBox/SwitchBox";
 import Toast from "@/components/Atoms/Toast/Toast";
-
-// Opzioni di durata
-const durataOpzioni = [
-  { label: 'Breve', value: 'short', chars: 'meno di 500 caratteri' },
-  { label: 'Medio', value: 'medium', chars: 'tra 500 e 1500 caratteri' },
-  { label: 'Lungo', value: 'long', chars: 'oltre 1500 caratteri' },
-];
-
-// Opzioni di tipo
-const tipoOpzioni = [
-  { label: 'Persona', value: 'person' },
-  { label: 'Animale', value: 'animal' },
-];
-
-// Opzioni di ambientazione
-const ambientazioneOpzioni = [
-  { label: 'Città', value: 'città' },
-  { label: 'Foresta', value: 'foresta' },
-  { label: 'Isola', value: 'isola' },
-  { label: 'Montagna', value: 'montagna' },
-  { label: 'Spazio', value: 'spazio' },
-  { label: 'Casa', value: 'casa' },
-  { label: 'Cimitero', value: 'cimitero' },
-  { label: 'Scuola', value: 'scuola' },
-  { label: 'Università', value: 'università' },
-  { label: 'Lavoro', value: 'lavoro' },
-];
-
-const tempoOpzioni = [
-  { label: 'Passato', value: 'past' },
-  { label: 'Presente', value: 'present' },
-  { label: 'Futuro', value: 'future' },
-];
-
-// Opzioni di lingua
-const linguaOpzioni = [
-  { label: 'Italiano', value: 'italiano' },
-  { label: 'Inglese', value: 'inglese' },
-  { label: 'Spagnolo', value: 'spagnolo' },
-  { label: 'Francese', value: 'francese' },
-];
 
 export default function Home() {
   const [protagonista, setProtagonista] = useState("");
@@ -135,25 +94,24 @@ export default function Home() {
   };
   
   const generateTitle = (text: string): string => {
-    // Verifica che `text` sia una stringa valida
-    if (typeof text !== 'string') {
+    if (typeof text !== 'string' || text.trim().length === 0) {
       return 'Titolo generato';
     }
   
-    // Rimuove spazi all'inizio e alla fine della stringa e la suddivide in frasi
     const sentences = text.trim().split('.');
-    
-    // Controlla se ci sono frasi nella stringa
-    if (sentences.length > 0) {
-      // Prende la prima frase e la suddivide in parole
-      const firstSentence = sentences[0].trim();
-      const words = firstSentence.split(' ');
-      
-      // Restituisce le prime 3 parole come titolo
-      return words.slice(0, 3).join(' ') + (words.length > 5 ? '' : '');
-    }
   
-    // Se non ci sono frasi, restituisce un titolo predefinito
+    if (sentences.length > 0) {
+      const firstSentences = sentences.slice(0, 3).join(' ').trim();
+      const words = firstSentences.split(' ').filter(word => word.length > 0);
+      
+      // Filtra segni di punteggiatura dalle parole
+      const filteredWords = words.map(word => word.replace(/[.,:;!?]/g, ''));
+      
+      if (filteredWords.length >= 5) {
+        return filteredWords.slice(0, 3).join(' ');
+      }
+      return filteredWords.join(' ');
+    }
     return 'Titolo generato';
   };
   
@@ -263,14 +221,14 @@ export default function Home() {
                 setAction={setAmbientazione}
               />
               <SelectBox
-                label="Genere:"
-                list={listaGeneri}
-                setAction={setGenere}
-              />
-                  <SelectBox
               label="Epoca:"
               list={tempoOpzioni}
               setAction={setTempo}
+              />
+              <SelectBox
+                label="Genere:"
+                list={listaGeneri}
+                setAction={setGenere}
               />
               <SelectBox
                 label="Lunghezza:"

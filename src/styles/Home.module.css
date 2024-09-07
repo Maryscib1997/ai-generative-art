@@ -71,7 +71,7 @@
 }
 
 .loader {
-  border: 8px solid rgba(0, 0, 0, 0.1); /* Colore di sfondo della circonferenza */
+  border: 8px solid var(--color-80);/* Colore di sfondo della circonferenza */
   border-radius: 50%;
   border-top: 8px solid var(--color-20); /* Colore della parte animata */
   width: 50px; /* Dimensione del cerchio */
@@ -79,7 +79,6 @@
   animation: spin 1s linear infinite;
 }
 
-/* Aggiungi questa sezione nel tuo file Home.module.css */
 .analysis {
   padding: 20px;
   padding-top: 35px;
@@ -150,12 +149,22 @@
     justify-content: center;
   }
 
+  .customButton {
+    padding: 10px 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    border-radius: 12px;
+    margin-top: 20px;
+  }
+  
   .result {
-    margin-top: 60px;
+    padding: 30px;
+    font-size: 16px;
     box-shadow: none;
     text-align: left;
-    width: 80%;
-    margin-top: 30px;
+    width: 100%;
+    line-height: 1.8;
   }
 
   .loading {
@@ -166,16 +175,18 @@
   }
 
   .loader {
-    border: 8px solid rgba(0, 0, 0, 0.1); /* Colore di sfondo della circonferenza */
+    border: 8px solid var(--color-80); /* Colore di sfondo della circonferenza */
     border-radius: 50%;
     border-top: 8px solid var(--color-20); /* Colore della parte animata */
     width: 50px; /* Dimensione del cerchio */
     height: 50px; /* Dimensione del cerchio */
     animation: spin 1s linear infinite;
+    margin-bottom: -25px;
   }
-  
 
-  
+  .analysis {
+    padding: 30px;
+  }
 }
 
 /* Media query per smartphone */
@@ -211,25 +222,34 @@
   }
 
   .customButton {
-    padding: 5px 10px;
-    background-color: var(--color-20);
-    color: var(--color-0);
+    padding: 8px 10px;
     border: none;
     cursor: pointer;
     transition: all 0.35s ease;
-    border-radius: 15px;
-    margin-top: 40px;
-    margin-left: 130px;
+    border-radius: 12px;
+    margin-top: 20px;
   }
   
+  .result {
+    padding: 20px;
+    font-size: 16px;
+    box-shadow: none;
+    text-align: left;
+    width: 100%;
+    line-height: 1.8;
+  }
+
+  .analysis {
+    padding: 20px;
+  }
 
   .loader {
-    border: 8px solid rgba(0, 0, 0, 0.1); /* Colore di sfondo della circonferenza */
     border-radius: 50%;
     border-top: 8px solid var(--color-20); /* Colore della parte animata */
     width: 50px; /* Dimensione del cerchio */
     height: 50px; /* Dimensione del cerchio */
     animation: spin 1s linear infinite;
+    margin-bottom: -25px;
   }
 
   @keyframes spin {
