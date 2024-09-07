@@ -1,5 +1,4 @@
-![gif](https://github.com/user-attachments/assets/63dab![gif](https://github.com/user-attachments/assets/5ae1776e-79d6-4ed0-928b-5b0252ca5ccf)
-d7f-8520-4b35-a52f-6959e1df3b2a)
+![gif](https://github.com/user-attachments/assets/051a4c0b-6573-47c3-bccf-66aa0a32864c)
 
 # Ai Story Teller
 
@@ -7,7 +6,6 @@ d7f-8520-4b35-a52f-6959e1df3b2a)
 
 AI Story Teller è un'app che consente agli utenti di creare e ascoltare storie personalizzate. Gli utenti possono scegliere vari parametri, come il genere, i personaggi e l'ambientazione, per generare una storia unica. Una volta che la storia è stata creata, è possibile ascoltarla direttamente nell'app.
 
-![Uploading mockup.jpg…]()
 
 ## Caratteristiche
 
