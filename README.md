@@ -1,10 +1,11 @@
-![Screenshot 2024-09-05 152842](https://github.com/user-attachments/assets/a47e2838-214e-489b-9a39-889908dd7ce0)
-
+![gif.gif]
 
 # Ai Story Teller
-[Vai al sito](https://vercel.com/mariadomenicas-projects/ai-story-teller-dtbi/)
+[Vai al sito](https://ai-story-teller-dtbi.vercel.app/)
 
 AI Story Teller è un'app che consente agli utenti di creare e ascoltare storie personalizzate. Gli utenti possono scegliere vari parametri, come il genere, i personaggi e l'ambientazione, per generare una storia unica. Una volta che la storia è stata creata, è possibile ascoltarla direttamente nell'app.
+
+![mockup.jpg]
 
 ## Caratteristiche
 

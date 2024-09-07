@@ -16,20 +16,12 @@ export const listaGeneri = [
     value: "avventura",
   },
   {
-    label: "Epico",
-    value: "epico",
-  },
-  {
     label: "Giallo",
     value: "giallo",
   },
   {
     label: "Thriller",
     value: "thriller",
-  },
-  {
-    label: "Noir",
-    value: "noir",
   },
   {
     label: "Horror",
